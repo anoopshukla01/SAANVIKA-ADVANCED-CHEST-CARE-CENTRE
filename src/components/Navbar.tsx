@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import { CLINIC_INFO, buildWhatsAppBookingUrl } from "@/lib/clinic-config";
 
@@ -125,49 +124,41 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu Drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.22, ease: "easeInOut" }}
-            className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-navy/10 bg-white lg:hidden"
-          >
-            <div className="space-y-1 px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="flex min-h-[44px] items-center rounded-xl px-3.5 py-2.5 text-base font-medium text-navy transition-colors hover:bg-surface hover:text-teal"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <div className="mt-4 flex flex-col gap-2.5 border-t border-navy/10 pt-4">
-                <a
-                  href={CLINIC_INFO.phoneHref}
-                  className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-navy/20 px-4 py-2.5 text-sm font-semibold text-navy"
-                >
-                  <Phone className="h-4 w-4 text-teal" />
-                  <span>Call {CLINIC_INFO.phoneDisplay}</span>
-                </a>
-                <a
-                  href={buildWhatsAppBookingUrl({})}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setMobileOpen(false)}
-                  className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-semibold text-white"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  <span>Book Appointment</span>
-                </a>
-              </div>
+      {mobileOpen && (
+        <div className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-navy/10 bg-white lg:hidden">
+          <div className="space-y-1 px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="flex min-h-[44px] items-center rounded-xl px-3.5 py-2.5 text-base font-medium text-navy transition-colors hover:bg-surface hover:text-teal"
+              >
+                {link.label}
+              </a>
+            ))}
+            <div className="mt-4 flex flex-col gap-2.5 border-t border-navy/10 pt-4">
+              <a
+                href={CLINIC_INFO.phoneHref}
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-navy/20 px-4 py-2.5 text-sm font-semibold text-navy"
+              >
+                <Phone className="h-4 w-4 text-teal" />
+                <span>Call {CLINIC_INFO.phoneDisplay}</span>
+              </a>
+              <a
+                href={buildWhatsAppBookingUrl({})}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-semibold text-white"
+              >
+                <MessageCircle className="h-4 w-4" />
+                <span>Book Appointment</span>
+              </a>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

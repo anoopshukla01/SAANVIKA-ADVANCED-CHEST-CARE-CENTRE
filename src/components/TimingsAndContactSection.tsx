@@ -22,31 +22,23 @@ export default function TimingsAndContactSection() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function handleContactSubmit(e: FormEvent) {
+  function handleContactSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
-    setSending(true);
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, message }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || "Please check your details and try again.");
-        return;
-      }
-      setSent(true);
-      setName("");
-      setPhone("");
-      setMessage("");
-    } catch {
-      setError("Unable to send inquiry right now. Please call or use WhatsApp.");
-    } finally {
-      setSending(false);
+    if (name.trim().length < 2 || phone.replace(/\D/g, "").length < 10 || message.trim().length < 3) {
+      setError("Please enter your name, a valid phone number, and your message.");
+      return;
     }
+    setSending(true);
+    const whatsappUrl = `https://wa.me/${CLINIC_INFO.whatsappNumber}?text=${encodeURIComponent(
+      `Hello ${CLINIC_INFO.name},\nName: ${name.trim()}\nPhone: ${phone.trim()}\nInquiry: ${message.trim()}`
+    )}`;
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    setSent(true);
+    setName("");
+    setPhone("");
+    setMessage("");
+    setSending(false);
   }
 
   return (

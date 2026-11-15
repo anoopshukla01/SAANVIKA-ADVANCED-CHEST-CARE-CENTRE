@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
-import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { CLINIC_INFO } from "@/lib/clinic-config";
 
@@ -137,7 +136,7 @@ export default function RootLayout({
             __html: JSON.stringify(medicalClinicSchema),
           }}
         />
-        <MotionConfig reducedMotion="user">{children}</MotionConfig>
+        {children}
       </body>
     </html>
   );

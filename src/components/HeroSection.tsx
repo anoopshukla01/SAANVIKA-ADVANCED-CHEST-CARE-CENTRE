@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { MessageCircle, Phone, CheckCircle2 } from "lucide-react";
 import { CLINIC_INFO, buildWhatsAppBookingUrl } from "@/lib/clinic-config";
 
@@ -14,12 +11,7 @@ export default function HeroSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
           {/* Left Content: Hero + Meet Your Chest Specialist Combined */}
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-7"
-          >
+          <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
               {CLINIC_INFO.name}
             </p>
@@ -88,15 +80,10 @@ export default function HeroSection() {
                 <span>Call Now &middot; {CLINIC_INFO.phoneDisplay}</span>
               </a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Side: Actual Photograph of Dr. Sandeep Gupta */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none"
-          >
+          <div className="mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-navy/10 bg-surface shadow-lg">
               <Image
                 src="/images/dr-sandeep-gupta.jpg"
@@ -107,7 +94,7 @@ export default function HeroSection() {
                 className="object-cover object-top"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
