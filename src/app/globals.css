@@ -26,6 +26,15 @@ textarea {
   -webkit-tap-highlight-color: transparent;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Mobile & touch refinements without altering desktop */
 @media (hover: none) and (pointer: coarse) {
   a:active,
