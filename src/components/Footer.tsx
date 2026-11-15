@@ -5,9 +5,9 @@ import { CLINIC_INFO } from "@/lib/clinic-config";
 
 const QUICK_LINKS = [
   { label: "Home", href: "/#home" },
-  { label: "About Doctor", href: "/#about-doctor" },
   { label: "Specialities", href: "/#specialities" },
   { label: "Facilities", href: "/#facilities" },
+  { label: "Asthma Care", href: "/#patient-information" },
   { label: "Contact", href: "/#contact" },
 ];
 

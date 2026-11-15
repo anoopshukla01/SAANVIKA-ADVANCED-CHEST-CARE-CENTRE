@@ -8,12 +8,11 @@ import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import { CLINIC_INFO, buildWhatsAppBookingUrl } from "@/lib/clinic-config";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "About Doctor", href: "#about-doctor" },
-  { label: "Specialities", href: "#specialities" },
-  { label: "Facilities", href: "#facilities" },
-  { label: "Patient Information", href: "#patient-information" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "Specialities", href: "/#specialities" },
+  { label: "Facilities", href: "/#facilities" },
+  { label: "Asthma Care", href: "/#patient-information" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function ClinicLogo() {
