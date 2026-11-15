@@ -10,7 +10,7 @@ export default function ConsultationHoursStickyNote() {
   return (
     <aside
       aria-label="Clinic Consultation Hours"
-      className="fixed bottom-4 right-4 z-40 hidden max-w-[270px] sm:block"
+      className="fixed bottom-4 right-4 z-40 hidden max-w-[270px] lg:block"
     >
       <div className="overflow-hidden rounded-2xl border border-gold/45 bg-[#FFFDF7] shadow-lg ring-1 ring-navy/5">
         {/* Top sticky-note accent bar */}

@@ -49,6 +49,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileOpen]);
+
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
@@ -102,7 +116,7 @@ export default function Navbar() {
         <button
           type="button"
           onClick={() => setMobileOpen((prev) => !prev)}
-          className="inline-flex items-center justify-center rounded-xl border border-navy/15 p-2 text-navy transition-colors hover:bg-surface lg:hidden"
+          className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-xl border border-navy/15 p-2 text-navy transition-colors hover:bg-surface lg:hidden"
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
         >
@@ -117,16 +131,16 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-t border-navy/10 bg-white lg:hidden"
+            transition={{ duration: 0.22, ease: "easeInOut" }}
+            className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-navy/10 bg-white lg:hidden"
           >
-            <div className="space-y-1 px-4 pb-5 pt-3">
+            <div className="space-y-1 px-4 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-3">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block rounded-xl px-3.5 py-2.5 text-base font-medium text-navy transition-colors hover:bg-surface hover:text-teal"
+                  className="flex min-h-[44px] items-center rounded-xl px-3.5 py-2.5 text-base font-medium text-navy transition-colors hover:bg-surface hover:text-teal"
                 >
                   {link.label}
                 </a>
@@ -134,7 +148,7 @@ export default function Navbar() {
               <div className="mt-4 flex flex-col gap-2.5 border-t border-navy/10 pt-4">
                 <a
                   href={CLINIC_INFO.phoneHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-navy/20 px-4 py-2.5 text-sm font-semibold text-navy"
+                  className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl border border-navy/20 px-4 py-2.5 text-sm font-semibold text-navy"
                 >
                   <Phone className="h-4 w-4 text-teal" />
                   <span>Call {CLINIC_INFO.phoneDisplay}</span>
@@ -144,7 +158,7 @@ export default function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileOpen(false)}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-semibold text-white"
+                  className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-xl bg-navy px-4 py-3 text-sm font-semibold text-white"
                 >
                   <MessageCircle className="h-4 w-4" />
                   <span>Book Appointment</span>

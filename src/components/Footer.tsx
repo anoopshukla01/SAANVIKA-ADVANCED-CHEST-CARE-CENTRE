@@ -23,7 +23,7 @@ const FOOTER_SPECIALITIES = [
 export default function Footer() {
   return (
     <footer className="bg-navy-dark text-white">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8 lg:py-16">
+      <div className="mx-auto max-w-7xl px-4 pb-[calc(5.5rem+env(safe-area-inset-bottom))] pt-14 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12">
           {/* Clinic Brand & Doctor Qualifications */}
           <div className="lg:col-span-4">

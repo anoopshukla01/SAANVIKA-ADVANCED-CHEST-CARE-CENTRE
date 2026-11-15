@@ -24,7 +24,7 @@ export default function HeroSection() {
               {CLINIC_INFO.name}
             </p>
 
-            <h1 className="mt-3 font-serif text-4xl font-semibold tracking-tight text-navy sm:text-5xl lg:text-[3.35rem] lg:leading-[1.12]">
+            <h1 className="mt-3 font-serif text-[clamp(1.95rem,6vw,3.35rem)] font-semibold leading-[1.12] tracking-tight text-navy lg:text-[3.35rem]">
               Breathe Better.{" "}
               <span className="text-teal">Live Healthier.</span>
             </h1>
@@ -75,14 +75,14 @@ export default function HeroSection() {
                 href={buildWhatsAppBookingUrl({})}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2.5 rounded-full bg-navy px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal"
               >
                 <MessageCircle className="h-4 w-4" />
                 <span>Book via WhatsApp</span>
               </a>
               <a
                 href={CLINIC_INFO.phoneHref}
-                className="inline-flex items-center justify-center gap-2.5 rounded-full border border-navy/15 bg-white px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-teal hover:text-teal"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2.5 rounded-full border border-navy/15 bg-white px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:border-teal hover:text-teal"
               >
                 <Phone className="h-4 w-4 text-teal" />
                 <span>Call Now &middot; {CLINIC_INFO.phoneDisplay}</span>

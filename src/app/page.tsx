@@ -6,11 +6,12 @@ import AsthmaAwarenessSection from "@/components/AsthmaAwarenessSection";
 import WhyChooseSection from "@/components/WhyChooseSection";
 import TimingsAndContactSection from "@/components/TimingsAndContactSection";
 import ConsultationHoursStickyNote from "@/components/ConsultationHoursStickyNote";
+import MobileBottomBar from "@/components/MobileBottomBar";
 import Footer from "@/components/Footer";
 
 export default function HomePage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-[100dvh] flex-col">
       <Navbar />
       <main className="flex-1">
         <HeroSection />
@@ -21,6 +22,7 @@ export default function HomePage() {
         <TimingsAndContactSection />
       </main>
       <ConsultationHoursStickyNote />
+      <MobileBottomBar />
       <Footer />
     </div>
   );

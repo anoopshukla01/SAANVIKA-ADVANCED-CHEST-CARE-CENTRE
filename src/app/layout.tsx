@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import { CLINIC_INFO } from "@/lib/clinic-config";
 
@@ -14,6 +15,13 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#102B46",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -121,7 +129,7 @@ export default function RootLayout({
     >
       <body
         suppressHydrationWarning
-        className="min-h-screen bg-white text-navy antialiased selection:bg-teal/15 selection:text-navy"
+        className="min-h-[100dvh] bg-white text-navy antialiased selection:bg-teal/15 selection:text-navy"
       >
         <script
           type="application/ld+json"
@@ -129,7 +137,7 @@ export default function RootLayout({
             __html: JSON.stringify(medicalClinicSchema),
           }}
         />
-        {children}
+        <MotionConfig reducedMotion="user">{children}</MotionConfig>
       </body>
     </html>
   );

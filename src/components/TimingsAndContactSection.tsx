@@ -126,7 +126,7 @@ export default function TimingsAndContactSection() {
                       href={CLINIC_INFO.address.googleMapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-teal hover:underline"
+                      className="mt-1.5 inline-flex min-h-[44px] items-center gap-1 text-xs font-semibold text-teal hover:underline lg:min-h-0"
                     >
                       <span>Get Directions on Google Maps</span>
                       <ExternalLink className="h-3 w-3" />
@@ -138,7 +138,7 @@ export default function TimingsAndContactSection() {
               <div className="mt-7 flex flex-wrap gap-3">
                 <a
                   href={CLINIC_INFO.phoneHref}
-                  className="inline-flex items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-navy px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-teal"
                 >
                   <Phone className="h-4 w-4" />
                   <span>Call Clinic</span>
@@ -149,7 +149,7 @@ export default function TimingsAndContactSection() {
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#128C7E] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-[#128C7E] px-5 py-2.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                 >
                   <MessageCircle className="h-4 w-4" />
                   <span>WhatsApp Appointment</span>
@@ -220,10 +220,11 @@ export default function TimingsAndContactSection() {
                       id="contact-name"
                       type="text"
                       required
+                      autoComplete="name"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Enter your name"
-                      className="mt-1.5 w-full rounded-xl border border-navy/15 bg-surface/40 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:bg-white"
+                      className="mt-1.5 min-h-[44px] w-full rounded-xl border border-navy/15 bg-surface/40 px-4 py-2.5 text-base text-navy outline-none focus:border-teal focus:bg-white lg:text-sm"
                     />
                   </div>
                   <div>
@@ -237,10 +238,12 @@ export default function TimingsAndContactSection() {
                       id="contact-phone"
                       type="tel"
                       required
+                      inputMode="tel"
+                      autoComplete="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+91 98XXXXXXXX"
-                      className="mt-1.5 w-full rounded-xl border border-navy/15 bg-surface/40 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:bg-white"
+                      className="mt-1.5 min-h-[44px] w-full rounded-xl border border-navy/15 bg-surface/40 px-4 py-2.5 text-base text-navy outline-none focus:border-teal focus:bg-white lg:text-sm"
                     />
                   </div>
                   <div>
@@ -257,13 +260,13 @@ export default function TimingsAndContactSection() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="How can we assist you?"
-                      className="mt-1.5 w-full rounded-xl border border-navy/15 bg-surface/40 px-4 py-2.5 text-sm text-navy outline-none focus:border-teal focus:bg-white"
+                      className="mt-1.5 w-full rounded-xl border border-navy/15 bg-surface/40 px-4 py-2.5 text-base text-navy outline-none focus:border-teal focus:bg-white lg:text-sm"
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={sending}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal disabled:opacity-50"
+                    className="inline-flex min-h-[44px] w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-teal disabled:opacity-50"
                   >
                     {sending ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
